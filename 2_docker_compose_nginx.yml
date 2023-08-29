@@ -1,0 +1,7 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx-itk2
+    image: nginx:latest
+    ports:
+      - "8765:80"

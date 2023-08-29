@@ -1,0 +1,11 @@
+# Use the official Nginx base image
+FROM nginx:latest
+
+# Copy your website files to the default Nginx web root directory
+COPY nginx/www-data/ /usr/share/nginx/html
+
+# Expose port 80 for HTTP traffic
+EXPOSE 80
+
+# Start the Nginx server when the container runs
+CMD ["nginx", "-g", "daemon off;"]

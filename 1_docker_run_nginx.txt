@@ -1,0 +1,1 @@
+docker run --rm -p 8765:80 --name nginx-itk1 nginx:latest

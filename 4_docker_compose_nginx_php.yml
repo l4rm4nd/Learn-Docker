@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:latest
+    volumes:
+      - ./nginx/www-data:/var/www # place your files for web here
+      - ./nginx/nginx-conf:/etc/nginx/conf.d # place provided nginx.conf here
+      #- ./nginx/logs:/var/log/nginx
+    container_name: itk-nginx
+    restart: unless-stopped
+    ports:
+      - 8765:80
+  
+  php:
+    image: php:8-fpm-alpine
+    volumes:
+      - ./nginx/www-data:/var/www # must be same path to www-data as above
+    container_name: itk-php
+    restart: unless-stopped
+    working_dir: /var/www
+    expose:
+      - 9000
