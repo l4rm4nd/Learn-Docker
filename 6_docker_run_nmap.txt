@@ -1,0 +1,8 @@
+# manual scan parameters, no persisted data
+docker run --rm -it instrumentisto/nmap -sS -Pn --top-ports 1000 scanme.nmap.org
+
+# manual scan parameters, persisted data in current dir
+docker run --rm -it -v "${PWD}:/tmp" instrumentisto/nmap -sS -Pn -n --top-ports 1000 -vvvv --open --max-retries 3 --max-rtt-timeout 900ms --min-hostgroup 254 --min-rate 30000 --defeat-rst-ratelimit --host-timeout 1m
+
+# example of a bash alias
+alias nmapfastscan='docker run --rm -it -v "${PWD}:/tmp" instrumentisto/nmap -sS -Pn -n --top-ports 1000 -vvvv --open --max-retries 3 --max-rtt-timeout 900ms --min-hostgroup 254 --min-rate 30000 --defeat-rst-ratelimit --host-timeout 1m '

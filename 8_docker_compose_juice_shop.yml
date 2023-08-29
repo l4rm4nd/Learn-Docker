@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+    juice-shop:
+        ports:
+            - '127.0.0.1:8765:3000'
+        image: bkimminich/juice-shop:latest
+        container_name: juice-shop
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.5'  # Limit to 50% of a CPU core
+                    memory: 512M  # Limit to 512 megabytes of memory
