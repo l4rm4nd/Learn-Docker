@@ -1,0 +1,37 @@
+services:
+
+  web:
+    image: nginx:stable-alpine
+    container_name: nginx
+    hostname: nginx
+    volumes:
+      - ./html:/var/www:ro # html files
+      - ./configs:/etc/nginx/conf.d # nginx config
+    restart: unless-stopped
+    expose:
+      - 80
+    ports:
+      - 8888:80
+    networks:
+      - my-external-network # required to access the Internet
+      - my-internal-network # required to talk to php container
+
+  php:
+    image: php:8-fpm-alpine
+    container_name: php
+    hostname: php
+    volumes:
+      - ./html:/var/www # html files
+      - ./configs/custom-php.ini:/usr/local/etc/php/conf.d/php.ini:ro # php config
+    restart: unless-stopped
+    working_dir: /var/www
+    expose:
+      - 9000
+    networks:
+      - my-internal-network # no internet access
+
+networks:
+  my-internal-network:
+    internal: true
+  my-external-network:
+    external: true
