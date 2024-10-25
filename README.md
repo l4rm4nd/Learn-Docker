@@ -1,8 +1,8 @@
 # Docker Workshop Readme
 
-title: Docker Workshop
-description: This repository provides a hands-on workshop covering essential Docker topics such as image building, Docker Compose, networking, CI/CD, and more.
-objectives:
+This repository provides a hands-on workshop covering essential Docker topics such as image building, Docker Compose, networking, CI/CD, and more.
+
+Objectives:
   - Learn the Docker image build process to create and manage images
   - Understand Docker local images and external ones from Docker Hub
   - Work with Docker Compose to manage multi-service stacks
@@ -11,7 +11,6 @@ objectives:
   - Master general Docker CLI commands and Compose YAML syntax
 
 # Additional Resources
-resources:
   - Docker Documentation: https://docs.docker.com/
   - Docker Hub: https://hub.docker.com/
   - GitHub Actions Documentation: https://docs.github.com/en/actions
