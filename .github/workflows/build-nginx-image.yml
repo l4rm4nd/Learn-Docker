@@ -5,8 +5,8 @@ on:
     branches:
       - 'main'
     paths:
-      - '5_docker_build_nginx.txt'
-      - 'nginx/**'
+      - '5_Docker_CICD/repo_code/**'
+      - '5_Docker_CICD/repo_code/html/**'
 
 jobs:
   docker:
@@ -28,8 +28,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: 5_docker_build_nginx.txt
+          context: main/5_Docker_CICD/repo_code
+          file: Dockerfile
           push: true
           tags: l4rm4nd/learn-docker:latest
           platforms: linux/amd64
