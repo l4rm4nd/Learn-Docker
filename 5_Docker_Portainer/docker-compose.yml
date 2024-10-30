@@ -7,7 +7,10 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      # bind mount volumes; as learnt
       - /mnt/docker-volumes/portainer:/data
+      # or docker volumes
+      #- portainer_data:/data
     ports:
       - 9443:9443
     expose:
@@ -19,6 +22,3 @@ services:
 #  portainer_data:
 #      external: true
 #      name: portainer_data
-
-
-# jkhsfUIKuidsfiukh34324
