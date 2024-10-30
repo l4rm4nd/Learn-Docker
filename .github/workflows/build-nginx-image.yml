@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'main'
+    paths:
+      - '9_Docker_CICD/repo_code/**'      
 
 jobs:
   docker:
