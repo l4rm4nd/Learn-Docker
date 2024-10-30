@@ -27,8 +27,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: 5_Docker_CICD/repo_code
-          file: 5_Docker_CICD/repo_code/Dockerfile
+          context: 9_Docker_CICD/repo_code
+          file: 9_Docker_CICD/repo_code/Dockerfile
           push: true
           tags: l4rm4nd/learn-docker:latest
           platforms: linux/amd64
