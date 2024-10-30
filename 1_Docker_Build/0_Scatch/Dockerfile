@@ -6,4 +6,3 @@ COPY example.bin /app/example.bin
 
 # Run the binary
 ENTRYPOINT ["/app/example.bin"]
-

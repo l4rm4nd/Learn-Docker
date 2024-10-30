@@ -12,7 +12,6 @@
 <?php
 
 phpinfo();
-//system("ls -la");
 
 ?>
 </body>

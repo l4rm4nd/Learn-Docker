@@ -2,24 +2,24 @@ services:
 
   web:
     image: nginx:stable-alpine
-    container_name: nginx
-    hostname: nginx
+    container_name: nginx-alpine
+    hostname: nginx-alpine
     volumes:
       - ./html:/var/www:ro # html files
-      - ./configs:/etc/nginx/conf.d # nginx config
+      - ./configs:/etc/nginx/conf.d # custom nginx config
     restart: unless-stopped
     expose:
       - 80
     ports:
-      - 8888:80
-  
+      - 9999:80/tcp
+
   php:
     image: php:8-fpm-alpine
     container_name: php
     hostname: php
     volumes:
-      - ./html:/var/www # html files
-      - ./configs/custom-php.ini:/usr/local/etc/php/conf.d/php.ini:ro # php config
+      - ./html:/var/www:ro # html files
+      #- ./configs/php.ini:/usr/local/etc/php/conf.d/php.ini:ro # custom php config
     restart: unless-stopped
     working_dir: /var/www
     expose:

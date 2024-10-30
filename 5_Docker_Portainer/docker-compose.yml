@@ -1,0 +1,24 @@
+services:
+
+  portainer:
+    image: portainer/portainer-ce:2.23.0-alpine
+    container_name: portainer-ce
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /mnt/docker-volumes/portainer:/data
+    ports:
+      - 9443:9443
+    expose:
+      - 9443 # https
+      - 9000 # http
+      - 8000 # deprecated http > swarm agents
+
+#volumes:
+#  portainer_data:
+#      external: true
+#      name: portainer_data
+
+
+# jkhsfUIKuidsfiukh34324

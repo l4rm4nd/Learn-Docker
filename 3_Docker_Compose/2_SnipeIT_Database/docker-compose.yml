@@ -1,0 +1,48 @@
+services:
+
+  snipe-it:
+    image: lscr.io/linuxserver/snipe-it:latest
+    container_name: snipe-it
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - APP_URL=${APP_URL:-http://127.0.0.1:8888}
+      - MYSQL_PORT_3306_TCP_ADDR=${DBIP:-mariadb}
+      - MYSQL_PORT_3306_TCP_PORT=${DBPORT:-3306}
+      - MYSQL_DATABASE=${DB:-snipeitdb}
+      - MYSQL_USER=${DB_USER:-snipeit}
+      - MYSQL_PASSWORD=${DB_PW:-snipeit}
+      - TZ=${TZ:-Europe/Berlin}
+    depends_on:
+      - mariadb
+    volumes:
+      - ./snipeit/config:/config
+    ports:
+      - 8888:80/tcp
+    restart: unless-stopped
+    networks:
+      - connection-to-internet
+      - no-internet-internal
+
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: mariadb
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Europe/Berlin}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PW:-snipeit}
+      - MYSQL_DATABASE=${DB:-snipeitdb}
+      - MYSQL_USER=${DB_USER:-snipeit}
+      - MYSQL_PASSWORD=${DB_PW:-snipeit}
+    volumes:
+      - ./snipeit/mariadb:/config
+    restart: unless-stopped
+    networks:
+      - no-internet-internal
+
+networks:
+  no-internet-internal:
+    internal: true
+  connection-to-internet:
+    external: true

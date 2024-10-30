@@ -1,14 +1,9 @@
-version: '3'
-
 services:
+
   nginx:
     image: nginx:latest
     container_name: my-nginx
     ports:
-      - "8888:80"
+      - "8888:80/tcp"
     volumes:
       - ./html:/usr/share/nginx/html:ro
-      
-# compared to docker run:
-# docker run -p 8888:80 -v ./html:/usr/share/nginx/html:ro --rm nginx:latest
-
